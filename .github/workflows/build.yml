@@ -39,12 +39,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: release_on_${{ matrix. os }}
-          path: release/
-          retention-days: 5
+      # - name: Upload Artifact
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: release_on_${{ matrix. os }}
+      #     path: release/
+      #     retention-days: 5
 
       # - name: release
       #   uses: actions/create-release@v1
@@ -59,11 +59,11 @@ jobs:
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        draft: false
-        prerelease: false
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
 
       - name: Upload Release Asset
         id: upload-release-asset
